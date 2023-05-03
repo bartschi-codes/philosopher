@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_parser.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbartsch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/03 16:51:33 by mbartsch          #+#    #+#             */
+/*   Updated: 2023/05/03 16:51:36 by mbartsch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "philo.h"
 
 static int	arg_parser(char *arg)
@@ -32,7 +43,7 @@ static int	check_errors_philo(t_philo_data *philo)
 	return (1);
 }
 
-int	parse_input(int argc, char *argv[], t_philo_data **philo)
+int	parse_input(int argc, char *argv[], t_philo_data *philo)
 {
 	int	z;
 
@@ -40,16 +51,16 @@ int	parse_input(int argc, char *argv[], t_philo_data **philo)
 	while (z < argc)
 	{
 		if (z == 1)
-			(*philo)->num_philo = arg_parser(argv[z]);
+			philo->num_philo = arg_parser(argv[z]);
 		else if (z == 2)
-			(*philo)->die_time = arg_parser(argv[z]);
+			philo->die_time = arg_parser(argv[z]);
 		else if (z == 3)
-			(*philo)->eat_time = arg_parser(argv[z]);
+			philo->eat_time = arg_parser(argv[z]);
 		else if (z == 4)
-			(*philo)->sleep_time = arg_parser(argv[z]);
+			philo->sleep_time = arg_parser(argv[z]);
 		else
-			(*philo)->num_eat = arg_parser(argv[z]);
+			philo->num_eat = arg_parser(argv[z]);
 		z++;
 	}
-	return (check_errors_philo(*philo));
+	return (check_errors_philo(philo));
 }

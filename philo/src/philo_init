@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbartsch <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/03 15:48:43 by mbartsch          #+#    #+#             */
+/*   Updated: 2023/05/03 16:52:48 by mbartsch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "philo.h"
 
 static int	philo_data_init(t_philo_data **info)
@@ -15,9 +26,8 @@ static int	philo_data_init(t_philo_data **info)
 
 static int	philo_philosopher_init(t_philo_data *info, t_philosopher philos[])
 {
-
 	struct timeval	start;
-	int		z;
+	int				z;
 
 	z = 0;
 	if (gettimeofday(&start, NULL))
@@ -27,6 +37,7 @@ static int	philo_philosopher_init(t_philo_data *info, t_philosopher philos[])
 		philos[z].start_time = &start;
 		philos[z].info = info;
 		philos[z].times_eaten = 0;
+		philos[z].philosopher_nbr = z + 1;
 		if (pthread_mutex_init(&philos[z].fork_1, NULL) == -1)
 			return (-1);
 		if (z == info->num_philo - 1)
@@ -38,13 +49,15 @@ static int	philo_philosopher_init(t_philo_data *info, t_philosopher philos[])
 	return (1);
 }
 
-static int	philo_philosophers_create(t_philo_data *info, t_philosopher *philos[])
+static int	philo_philosophers_create(t_philo_data *info, \
+				t_philosopher *philos[])
 {
-	int	z;
-	t_philosopher *philo;
+	int				z;
+	t_philosopher	*philo;
 
-	z = 1;
-	(*philos) = (t_philosopher *)malloc(sizeof(t_philosopher) * info->num_philo);
+	z = 0;
+	(*philos) = (t_philosopher *)malloc(sizeof(t_philosopher) * \
+					info->num_philo);
 	if (!philos)
 		return (0);
 	while (z <= info->num_philo)
@@ -52,14 +65,14 @@ static int	philo_philosophers_create(t_philo_data *info, t_philosopher *philos[]
 		philo = (t_philosopher *)malloc(sizeof(t_philosopher));
 		if (!philo)
 			return (0);
-		philo->philosopher_nbr = z;
-		(*philos)[z - 1] = *philo;
+		(*philos)[z] = *philo;
 		z++;
 	}
 	return (1);
 }
 
-void	initer(int argc, char *argv[], t_philo_data **info, t_philosopher *philos[])
+void	initer(int argc, char *argv[], t_philo_data **info, \
+				t_philosopher *philos[])
 {
 	if (!philo_data_init(info))
 		error_h("malloc error", *info, *philos);
