@@ -11,22 +11,25 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-int	philo_thread(t_philo_data *info, t_philosopher *philos[])
+int	philo_thread(t_philo_data *info, t_philosopher **philos)
 {
 	int			i;
 	pthread_t	*threads;
+	t_philosopher	*p;
 
 	i = 0;
 	threads = (pthread_t *)malloc(sizeof(pthread_t) * info->num_philo);
 	if (!threads)
 		return (0);
-	while (i < info->num_philo)
+	p = *philos;
+	while (p)
 	{
 		if (pthread_create(&threads[i], NULL, (void *)philo_philosopher, \
-				(void *)philos[i]) == -1)
+				(void *)p) == -1)
 			return (-1);
 		pthread_join(threads[i], NULL);
 		i++;
+		p++;
 	}
 	return (1);
 }

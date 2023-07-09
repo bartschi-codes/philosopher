@@ -28,22 +28,22 @@ static int	arg_parser(char *arg)
 	return (num);
 }
 
-static int	check_errors_philo(t_philo_data *philo)
+static t_philo_data	*check_errors_philo(t_philo_data *philo)
 {
 	if (philo->num_philo == -2)
-		return (0);
+		return (NULL);
 	else if (philo->die_time == -2)
-		return (0);
+		return (NULL);
 	else if (philo->eat_time == -2)
-		return (0);
+		return (NULL);
 	else if (philo->sleep_time == -2)
-		return (0);
+		return (NULL);
 	else if (philo->num_eat == -2)
-		return (0);
-	return (1);
+		return (NULL);
+	return (philo);
 }
 
-int	parse_input(int argc, char *argv[], t_philo_data *philo)
+t_philo_data	*parse_input(int argc, char *argv[], t_philo_data *philo)
 {
 	int	z;
 

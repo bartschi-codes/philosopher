@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-void	print_philos(int num, t_philosopher philo[])
+void	print_philos(t_philosopher *philo[])
 {
 	int	z;
+	t_philosopher	*p;
 
+	p = *philo;
 	z = 0;
-	while (z < num)
+	while (p)
 	{
-		printf("nbr: %d\n", philo[z].philosopher_nbr);
+		printf("nbr: %d\n", p->philosopher_nbr);
 		z++;
+		p = *(philo + z);
 	}
 }
 
@@ -33,13 +36,14 @@ void	print_info(t_philo_data *info)
 int	main(int argc, char *argv[])
 {
 	t_philosopher	*philos;
-	t_philo_data	info;
+	t_philo_data	*info;
 
 	if (argc < 5 || argc > 6)
 		error_h("wrong input", NULL, NULL);
 	philos = NULL;
+	info = NULL;
 	initer(argc, argv, &info, &philos);
-	print_philos(info.num_philo, philos);
-	philo_thread(&info, &philos);
-	print_info(&info);
+	print_philos(&philos);
+	philo_thread(info, &philos);
+	print_info(info);
 }

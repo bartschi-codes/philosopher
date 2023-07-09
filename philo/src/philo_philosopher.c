@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-static int	check_death(t_philosopher *philo)
+/*static int	check_death(t_philosopher *philo)
 {
 	return (1);
-}
+}*/
 
 void	philo_philosopher(t_philosopher *philo)
 {
-	printf("ich bin philospoher %d", philo->philosopher_nbr);
+	printf("ich bin philospoher %d\n", philo->philosopher_nbr);
 	pthread_exit(NULL);
 }

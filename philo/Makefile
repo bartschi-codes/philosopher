@@ -20,7 +20,7 @@ INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CC = cc
-CFLAGS ?= $(INC_FLAGS) -MMD -MP
+CFLAGS ?= $(INC_FLAGS) -Wall -Werror -Wextra -MMD -MP
 
 LD = cc
 LDFLAGS = $(LIBS)

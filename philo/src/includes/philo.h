@@ -35,11 +35,11 @@ typedef struct s_philosopher{
 	struct timeval		*start_time;
 }	t_philosopher;
 
-void	initer(int argc, char *argv[], t_philo_data *info, \
-				t_philosopher *philos[]);
-int		parse_input(int agrc, char *argv[], t_philo_data *info);
-void	error_h(char *err_msg, t_philo_data *info, t_philosopher philos[]);
+void		initer(int argc, char *argv[], t_philo_data **info, \
+				t_philosopher **philos);
+t_philo_data	*parse_input(int agrc, char *argv[], t_philo_data *info);
+void		error_h(char *err_msg, t_philo_data *info, t_philosopher philos[]);
 int		philo_thread(t_philo_data *info, t_philosopher *philos[]);
-void	philo_philosopher(t_philosopher *philo);
+void		philo_philosopher(t_philosopher *philo);
 
 #endif
