@@ -18,4 +18,5 @@ int	main(int argc, char *argv[])
 	if (init_cntrl(argv, &cntrl))
 		return (printf("wrong input\n"), 1);
 	print_philo(cntrl);
+	god(cntrl);
 }

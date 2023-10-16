@@ -52,6 +52,9 @@ static int	ph_atoi(char *arg, int *dest)
 
 int	init_cntrl(char *argv[], t_control **cntrl)
 {
+	int	z;
+
+	z = -1;
 	if (!check_input(argv))
 		return (1);
 	*cntrl = (t_control *)malloc(sizeof(t_control));
@@ -67,5 +70,9 @@ int	init_cntrl(char *argv[], t_control **cntrl)
 		return (free(*cntrl), 1);
 	if (ph_atoi(argv[5], &(*cntrl)->number_eat))
 		return (free(*cntrl), 1);
+	(*cntrl)->all_alive = 1;
+	pthread_mutex_init(&(*cntrl)->satisfied, NULL);
+	while (++z < (*cntrl)->number_philos)
+		pthread_mutex_init(&(*cntrl)->forks[z], NULL);
 	return (0);
 }

@@ -26,7 +26,7 @@ CFLAGS ?= $(INC_FLAGS) -Wall -Werror -Wextra -MMD -MP -g
 
 LD = cc
 LDFLAGS = $(LIBS)
-LINKS = 
+LINKS = -pthread
 
 HIDE = @
 
