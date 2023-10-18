@@ -14,9 +14,8 @@
 typedef struct s_philo{
 	int			philo_nbr;
 	long long		last_meal;
-	int			left_fork;
-	int			right_fork;
-	int			left_handed;
+	int			fork;
+	int			knife;
 	int			ate;
 	pthread_t		thread_number;
 	struct	s_control	*cntrl;
@@ -31,16 +30,19 @@ typedef struct	s_control{
 	int		all_alive;
 	long long	start_time;
 	pthread_mutex_t	satisfied;
-	pthread_mutex_t	all_live;
+	pthread_mutex_t	dead;
 	pthread_mutex_t	pen;
-	pthread_mutex_t forks[PHILO_AMOUNT];
+	pthread_mutex_t cutlery[PHILO_AMOUNT];
 	t_philo		philos[PHILO_AMOUNT];
+	pthread_t	reaper;
 }	t_control;
 
 int		init_cntrl(char *argv[], t_control **cntrl);
 int		god(t_control *cntrl);
+int		all_alive(t_control *cntrl);
 long long	new_time(void);
 void		timer(int time, t_philo *philo);
 void		use_pen(t_philo *philo, char *str);
 void		*philosopher(void *tmp);
+void		*reaper(void *tmp);
 #endif

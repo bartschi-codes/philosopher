@@ -72,7 +72,8 @@ int	init_cntrl(char *argv[], t_control **cntrl)
 		return (free(*cntrl), 1);
 	(*cntrl)->all_alive = 1;
 	pthread_mutex_init(&(*cntrl)->satisfied, NULL);
+	pthread_mutex_init(&(*cntrl)->pen, NULL);
 	while (++z < (*cntrl)->number_philos)
-		pthread_mutex_init(&(*cntrl)->forks[z], NULL);
+		pthread_mutex_init(&(*cntrl)->cutlery[z], NULL);
 	return (0);
 }
