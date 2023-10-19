@@ -17,7 +17,7 @@ int	kill_philo(t_philo philo, long long time)
 	pthread_mutex_lock(&philo.cntrl->satisfied);
 	last_time = philo.last_meal;
 	pthread_mutex_unlock(&philo.cntrl->satisfied);
-	if (time - last_time >= philo.cntrl->die_time)
+	if (time - last_time > philo.cntrl->die_time)
 		return (1);
 	return (0);
 }
