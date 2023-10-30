@@ -15,13 +15,12 @@ static void	philo_init(t_philo *philo, t_control *cntrl)
 		philo[z].last_meal = philo[0].cntrl->start_time;
 		z++;
 	}
-		
 }
 
 int	god(t_control *cntrl)
 {
 	t_philo	*philo;
-	int	z;
+	int		z;
 
 	z = 0;
 	philo = cntrl->philos;
@@ -29,7 +28,8 @@ int	god(t_control *cntrl)
 	philo_init(philo, cntrl);
 	while (z < cntrl->number_philos)
 	{
-		if (pthread_create(&philo[z].thread_number, NULL, philosopher, &philo[z]))
+		if (pthread_create(&philo[z].thread_number, NULL, \
+			philosopher, &philo[z]))
 			return (1);
 		z++;
 	}
@@ -37,4 +37,3 @@ int	god(t_control *cntrl)
 		return (1);
 	return (0);
 }
-

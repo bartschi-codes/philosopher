@@ -3,7 +3,7 @@ BONUS ?=
 
 BUILD_DIR ?= ./obj
 SRC_DIRS ?= ./src
-BONUS_DIRS ?= ./src/bonus
+BONUS_DIRS ?= 
 INCL_DIR ?= ./include
 
 LIB = 

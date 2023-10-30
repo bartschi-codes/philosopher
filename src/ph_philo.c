@@ -34,13 +34,11 @@ void	*philosopher(void *tmp)
 	if (philo->cntrl->number_philos == 1)
 	{
 		lonley_life(philo);
-		return(NULL);
+		return (NULL);
 	}
 	while (all_alive(philo->cntrl))
 	{
 		dinner_time(philo);
-		if (philo->ate == philo->cntrl->number_eat)
-			break;
 		use_pen(philo, "is sleeping");
 		timer(philo->cntrl->sleep_time, philo);
 		use_pen(philo, "is thinking");

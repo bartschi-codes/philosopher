@@ -14,7 +14,7 @@ static int	check_input(char *argv[])
 
 	z = 1;
 	z2 = 0;
-	while(argv[z])
+	while (argv[z])
 	{
 		while (argv[z][z2])
 		{
@@ -22,7 +22,7 @@ static int	check_input(char *argv[])
 				return (0);
 			z2++;
 		}
-		z2 = 0;	
+		z2 = 0;
 		z++;
 	}
 	return (1);
@@ -31,7 +31,6 @@ static int	check_input(char *argv[])
 static int	ph_atoi(char *arg, int *dest)
 {
 	long	z;
-
 
 	if (!arg)
 	{
@@ -50,11 +49,23 @@ static int	ph_atoi(char *arg, int *dest)
 	return (0);
 }
 
-int	init_cntrl(char *argv[], t_control **cntrl)
+void	init_mutexes(t_control **cntrl)
 {
 	int	z;
 
-	z = -1;
+	z = 0;
+	pthread_mutex_init(&(*cntrl)->satisfied, NULL);
+	pthread_mutex_init(&(*cntrl)->dead, NULL);
+	pthread_mutex_init(&(*cntrl)->pen, NULL);
+	while (z < (*cntrl)->number_philos)
+	{
+		pthread_mutex_init(&(*cntrl)->cutlery[z], NULL);
+		z++;
+	}
+}
+
+int	init_cntrl(char *argv[], t_control **cntrl)
+{
 	if (!check_input(argv))
 		return (1);
 	*cntrl = (t_control *)malloc(sizeof(t_control));
@@ -71,9 +82,6 @@ int	init_cntrl(char *argv[], t_control **cntrl)
 	if (ph_atoi(argv[5], &(*cntrl)->number_eat))
 		return (free(*cntrl), 1);
 	(*cntrl)->all_alive = 1;
-	pthread_mutex_init(&(*cntrl)->satisfied, NULL);
-	pthread_mutex_init(&(*cntrl)->pen, NULL);
-	while (++z < (*cntrl)->number_philos)
-		pthread_mutex_init(&(*cntrl)->cutlery[z], NULL);
+	init_mutexes(cntrl);
 	return (0);
 }
