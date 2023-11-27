@@ -56,7 +56,7 @@ void	*reaper(void *tmp)
 
 	cntrl = (t_control *)tmp;
 	usleep(cntrl->die_time / 2);
-	while (cntrl->all_alive)
+	while (all_alive(cntrl))
 	{
 		time = new_time();
 		z = 0;

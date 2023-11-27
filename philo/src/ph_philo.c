@@ -2,9 +2,9 @@
 
 static void	dinner_time(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->cntrl->cutlery[philo->fork]);
-	use_pen(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->cntrl->cutlery[philo->knife]);
+	use_pen(philo, "has taken a fork");
+	pthread_mutex_lock(&philo->cntrl->cutlery[philo->fork]);
 	use_pen(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->cntrl->satisfied);
 	philo->last_meal = new_time();

@@ -44,6 +44,7 @@ void	*reaper(void *tmp)
 	long long	time;
 	t_philo		*philo;
 
+	z = 0;
 	philo = (t_philo *)tmp;
 	while (42)
 	{

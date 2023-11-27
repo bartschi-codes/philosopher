@@ -34,7 +34,7 @@ void	*philosopher(t_philo *philo)
 		return (NULL);
 	if (philo->cntrl->number_philos == 1)
 		return (lonley_life(philo));
-	while (philo->cntrl->all_live)
+	while (all_alive(philo->cntrl))
 	{
 		dinner_time(philo);
 		if (philo->ate == philo->cntrl->number_eat)

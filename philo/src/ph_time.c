@@ -15,7 +15,7 @@ void	timer(int time, t_philo *philo)
 	long long	start;
 
 	start = new_time();
-	while (philo->cntrl->all_alive)
+	while (all_alive(philo->cntrl))
 	{
 		if (new_time() - start >= time)
 			break ;

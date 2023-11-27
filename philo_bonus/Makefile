@@ -22,7 +22,7 @@ INC_DIRS := $(shell find $(INCL_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CC = cc
-CFLAGS ?= $(INC_FLAGS) -Wall -Werror -Wextra -MMD -MP -g
+CFLAGS ?= $(INC_FLAGS) -Wall -Werror -Wextra -MMD -MP -g3
 
 LD = cc
 LDFLAGS = $(LIBS)
