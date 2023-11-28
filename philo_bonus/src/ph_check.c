@@ -52,26 +52,26 @@ static int	ph_atoi(char *arg, int *dest)
 
 static int	semas_init(t_control *cntrl)
 {
-	sem_unlink("/all_alive");
-	cntrl->all_alive = sem_open("/all_alive", O_CREAT, 0664, 1);
+	sem_unlink("all_alive");
+	sem_unlink("dead");
+	sem_unlink("pen");
+	sem_unlink("cutlery");
+	sem_unlink("satisfied");
+	cntrl->all_alive = sem_open("all_alive", O_CREAT, 0664, 1);
 	if (cntrl->all_alive == SEM_FAILED)
 		return (1);
-	sem_unlink("/all_alive");
-	sem_unlink("/dead");
-	cntrl->dead = sem_open("/dead", O_CREAT, 0664, 1);
+	cntrl->dead = sem_open("dead", O_CREAT, 0664, 1);
 	if (cntrl->dead == SEM_FAILED)
 		return (1);
-	sem_unlink("/dead");
-	sem_unlink("/pen");
-	cntrl->pen = sem_open("/pen", O_CREAT, 0664, 1);
+	cntrl->pen = sem_open("pen", O_CREAT, 0664, 1);
 	if (cntrl->pen == SEM_FAILED)
 		return (1);
-	sem_unlink("/pen");
-	sem_unlink("/cutlery");
-	cntrl->cutlery = sem_open("/cutlery", O_CREAT, 0664, cntrl->number_philos);
+	cntrl->cutlery = sem_open("cutlery", O_CREAT, 0664, cntrl->number_philos);
 	if (cntrl->cutlery == SEM_FAILED)
 		return (1);
-	sem_unlink("/cutlery");
+	cntrl->satisfied = sem_open("satisfiede", O_CREAT, 0664, 1);
+	if (cntrl->satisfied == SEM_FAILED)
+		return (1);
 	sem_wait(cntrl->all_alive);
 	return (0);
 

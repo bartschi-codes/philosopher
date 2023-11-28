@@ -13,18 +13,15 @@
 # include <semaphore.h>
 
 # ifndef PHILO_AMOUNT
-#  define PHILO_AMOUNT 400
+#  define PHILO_AMOUNT 200
 # endif
 
 typedef struct s_philo{
 	int			philo_nbr;
-	char			name_nbr;
 	long long		last_meal;
-	char			*name;
-	int			ate;
+	int			ate_nbr;
 	pid_t			pid;
 	pthread_t		reaper;
-	sem_t			*satisfied;
 	struct	s_control	*cntrl;
 }	t_philo;
 
@@ -34,9 +31,7 @@ typedef struct	s_control{
 	int		eat_time;
 	int		sleep_time;
 	int		number_eat;
-	int		all_live;
 	long long	start_time;
-	pthread_t	devil;
 	sem_t		*all_alive;
 	sem_t		*dead;
 	sem_t		*pen;

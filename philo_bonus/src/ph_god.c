@@ -11,14 +11,6 @@ static int	philo_init(t_philo *philo, t_control *cntrl)
 		philo[z].cntrl = cntrl;
 		philo[z].ate = 0;
 		philo[z].last_meal = cntrl->start_time;
-		philo[z].name_nbr = philo[z].philo_nbr;
-		philo[z].name = ft_strjoin("/", &philo[z].name_nbr);
-		if (!philo[z].name)
-			return (1);
-		sem_unlink(philo[z].name);
-		philo[z].satisfied = sem_open(philo[z].name, O_CREAT, 0664, 1);
-		sem_unlink(philo[z].name);
-		free(philo[z].name);
 		z++;
 	}
 	return (0);
