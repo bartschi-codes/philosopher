@@ -1,4 +1,4 @@
-NAME ?= philo
+NAME ?= philo_bonus
 BONUS ?=
 
 BUILD_DIR ?= ./obj
