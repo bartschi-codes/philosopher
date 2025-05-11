@@ -18,6 +18,10 @@ static void	free_control(t_control *controler)
 	sem_close(controler->dead);
 	sem_close(controler->pen);
 	sem_close(controler->cutlery);
+	sem_unlink("all_alive");
+	sem_unlink("dead");
+	sem_unlink("pen");
+	sem_unlink("cutlery");
 	free(controler);
 }
 

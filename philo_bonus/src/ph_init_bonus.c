@@ -14,20 +14,20 @@
 
 static int	open_semaphores(t_control *controler)
 {
-	sem_unlink("all_alive\n");
-	sem_unlink("dead\n");
-	sem_unlink("pen\n");
-	sem_unlink("cutlery\n");
-	controler->all_alive = sem_open("all_alive\n", O_CREAT, 0644, 1);
+	sem_unlink("all_alive");
+	sem_unlink("dead");
+	sem_unlink("pen");
+	sem_unlink("cutlery");
+	controler->all_alive = sem_open("all_alive", O_CREAT, 0644, 1);
 	if (controler->all_alive == SEM_FAILED)
 		return (1);
-	controler->dead = sem_open("dead\n", O_CREAT, 0644, 1);
+	controler->dead = sem_open("dead", O_CREAT, 0644, 1);
 	if (controler->dead == SEM_FAILED)
 		return (sem_close(controler->all_alive), 2);
-	controler->pen = sem_open("pen\n", O_CREAT, 0644, 1);
+	controler->pen = sem_open("pen", O_CREAT, 0644, 1);
 	if (controler->pen == SEM_FAILED)
 		return (sem_close(controler->all_alive), sem_close(controler->dead), 2);
-	controler->cutlery = sem_open("cutlery\n", O_CREAT, 0644, \
+	controler->cutlery = sem_open("cutlery", O_CREAT, 0644, \
 		controler->number_philos);
 	if (controler->cutlery == SEM_FAILED)
 		return (sem_close(controler->all_alive), sem_close(controler->dead), \

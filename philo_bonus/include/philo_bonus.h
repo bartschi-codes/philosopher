@@ -64,5 +64,6 @@ void		*reaper(void *arg);
 void		*devil(void *arg);
 int			lonely_life(t_philo *philo);
 int			philo_life(t_philo *philo);
+int			philo_alive(t_philo *philo);
 void		use_pen(t_philo *philo, char *str);
 #endif
