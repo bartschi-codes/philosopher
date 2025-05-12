@@ -6,9 +6,9 @@
 ## 📝 Overview
 
 A classic concurrency problem brought to life using threads and mutexes aswell as processes and semaphores.  
-The **Dining Philosophers** simulation challenges introduced me to manage shared resources and avoid race conditions and deadlocks.
+The **Dining Philosophers** simulation challenge introduced me to manage shared resources, avoid race conditions and deadlocks. The Philosophers sit together and share Forks, where there are as many forks as philosophers, and philosophers can only eat with two forks.
 
-I'll implemented two version: 
+I implemented two version: 
 - **Multithreaded** using `pthreads` and `mutexes`  
 - **Multiprocess** using `semaphores` and `process control`
 
@@ -47,7 +47,7 @@ make
 ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
 ```
 
-### 🔁 Processes Version (Bonus)
+### 🔁 Processes Version
 
 ```bash
 cd philo_bonus
