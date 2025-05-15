@@ -22,7 +22,7 @@ void	*reaper(void *arg)
 	sem_wait(control->all_alive);
 	while (z < control->number_philos)
 	{
-		kill(control->philo_pids[z], 15);
+		kill(control->philo_pids[z], SIGTERM);
 		z++;
 	}
 	return (NULL);
@@ -51,5 +51,4 @@ void	*devil(void *arg)
 			return (NULL);
 		}
 	}
-	return (NULL);
 }

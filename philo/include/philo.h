@@ -23,8 +23,7 @@
 #  define PHILO_AMOUNT 400
 # endif
 
-typedef struct s_philo
-{
+typedef struct s_philo{
 	int					philo_nbr;
 	long long			last_meal;
 	int					fork;
@@ -34,8 +33,7 @@ typedef struct s_philo
 	struct s_control	*cntrl;
 }	t_philo;
 
-typedef struct s_control
-{
+typedef struct s_control{
 	int				number_philos;
 	int				die_time;
 	int				eat_time;
