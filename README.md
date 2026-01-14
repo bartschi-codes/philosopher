@@ -105,4 +105,4 @@ philosophers/
 
 ## 👨‍💻 Authors
 
-- [@bartsch-tech](https://github.com/bartsch-tech)
+- [@bartschi-code](https://github.com/bartschi-code)
